@@ -59,9 +59,64 @@ alter = (req,res)=>{
     }
     db.sqlConnect(sql, sqlArr, callback);
 }
+/*注册*/
+register = (req,res)=>{
+    var username = req.body.username
+    var password = req.body.password
+    var sql = `insert into user(username,password) value(?,?)`
+    var sqlArr = [username,password]
+    var callback = (err,data,)=>{
+        if (err){
+            res.send({
+                status:'0',
+                msg:'注册失败，用户名或密码错误！'
+            })
+        }else {
+            res.send({
+                status:'1',
+                msg:'注册成功，欢迎加入大家庭！'
+            })
+        }
+    }
+    db.sqlConnect(sql, sqlArr, callback);
+}
+/*登录*/
+login = (req,res)=>{
+    var username = req.body.username
+    var password = req.body.password
+    var sql = `select * from user where username=? and password=?`
+    var sqlArr = [username,password]
+    var callback = async (err,data,)=>{
+        if (err){
+            console.log(err)
+            res.send({
+                'code':400,
+                'msg':'出错了！'
+            })
+        }else if (data == ""){
+            res.send({
+                'code':400,
+                'msg':'用户名或者密码出错了！',
+                'data':[]
+            })
+        }else {
+            let password = data[0].password
+            let result = await password
+            data[0].userinfo = result[0];
+            res.send({
+                'code':200,
+                'msg':'登录成功,欢迎回家！',
+                'data':data[0]
+            })
+        }
+    }
+    db.sqlConnect(sql, sqlArr, callback);
+}
 module.exports = {
     query,
     add,
     deletes,
-    alter
+    alter,
+    register,
+    login
 }
