@@ -1,5 +1,5 @@
 # weblog
-## node(express+mysql)+vue(vue/cli3)
+## node(express+mysql)+vue(vue/cli3+element.ui)
 ### cd weblog
 ### cd nodeblog
 npm install
