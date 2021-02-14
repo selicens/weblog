@@ -14,4 +14,8 @@ router.post('/add', sql.add);
 router.post('/deletes', sql.deletes);
 
 router.post('/alter', sql.alter);
+
+router.post('/login',sql.login);
+
+router.post('/register',sql.register)
 module.exports = router;
