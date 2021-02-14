@@ -21,6 +21,7 @@
           </el-submenu>
         </el-submenu>
         <el-menu-item index="3"><router-link to="/backstage">管理</router-link></el-menu-item>
+        <el-menu-item index="4"><router-link to="/login">登录</router-link></el-menu-item>
       </el-menu>
     </div>
     <div>
@@ -36,7 +37,14 @@
     name:'Header',
     data(){
       return{
+        username:''
       }
+    },
+    methods:{
+
+    },
+    mounted() {
+
     }
   }
 </script>
