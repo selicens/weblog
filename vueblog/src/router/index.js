@@ -7,6 +7,8 @@ import Backstage from "../views/Backstage";
 import Article from "../views/Article";
 import Details from "../views/Details";
 import Footer from "../views/Footer";
+import Login from "../views/Login";
+import Register from "../views/Register";
 
 Vue.use(VueRouter)
 
@@ -54,6 +56,16 @@ const routes = [
     path: '/details',
     name: 'details',
     component: Details
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
   }
 ]
 
