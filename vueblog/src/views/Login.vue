@@ -35,6 +35,7 @@
                     console.log(res.data)
                     if (res.data.code==200){
                         this.$message.success(res.data.msg);
+                        this.$router.push('/home')
                     }else {
                         this.$message.warning(res.data.msg)
                     }
