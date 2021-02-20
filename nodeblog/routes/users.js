@@ -17,5 +17,7 @@ router.post('/alter', sql.alter);
 
 router.post('/login',sql.login);
 
-router.post('/register',sql.register)
+router.post('/register',sql.register);
+
+router.post('/page',sql.page);
 module.exports = router;

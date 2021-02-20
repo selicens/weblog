@@ -112,11 +112,31 @@ login = (req,res)=>{
     }
     db.sqlConnect(sql, sqlArr, callback);
 }
+
+/*分页*/
+page = (req,res)=>{
+    let currentPage = req.body.currentPage || 1
+    let pageSize = req.body.pageSize || 10
+    let page = (currentPage-1)*pageSize //从哪条开始查
+    var sql = `select * from user;select * from user limit ?,? `
+    var sqlArr = [page,pageSize]
+    var callback = (err,data)=>{
+        if(err) {
+            res.send({code:400,msg:'查询失败！'})
+        }else {
+
+            res.send({code:200,msg:'查询成功！',data})
+        }
+    }
+    db.sqlConnect(sql, sqlArr, callback);
+}
+
 module.exports = {
     query,
     add,
     deletes,
     alter,
     register,
-    login
+    login,
+    page
 }
